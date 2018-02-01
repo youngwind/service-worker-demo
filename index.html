@@ -12,5 +12,16 @@
 <body>
 <script src="js/jquery.js"></script>
 <script src="js/index.js"></script>
+<script type="text/javascript">
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('./sw.js', {scope: './'})
+            .then(function (reg) {
+                console.log('注册 sw.js 完成');
+            })
+            .catch(function (err) {
+                console.error('注册 sw.js 出错');
+            })
+    }
+</script>
 </body>
 </html>
