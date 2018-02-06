@@ -10,9 +10,9 @@ this.addEventListener('install', function (event) {
             return cache.addAll([
                 './',
                 'getList',
-                'img/avatar.jpg',
-                'js/index.js',
-                'js/jquery.js'
+                'img/avatar_v1.jpg',
+                'js/index_v2.js',
+                'js/jquery_v1.js'
             ]);
         })
     )

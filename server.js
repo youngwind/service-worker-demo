@@ -8,7 +8,10 @@ const Router = require('koa-router');
 const app = new Koa();
 const router = new Router();
 app.use(logger());
-app.use(serve('static'));
+app.use(serve('sw'));
+app.use(serve('static', {
+    maxage: 365 * 24 * 60 * 60 * 1000
+}));
 
 router.get('/', ctx => {
     let html = fs.readFileSync(path.resolve(__dirname, 'index.html'), 'utf-8');

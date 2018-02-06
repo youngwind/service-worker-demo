@@ -3,3 +3,4 @@ $.ajax('/getList').done(function (res) {
         $('#list').append(`<li>${item}</li>`)
     })
 });
+console.log('>>>>>>>', 2);
