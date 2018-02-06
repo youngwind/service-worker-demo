@@ -1,4 +1,5 @@
-const CACHE_NAME = 'service-worker-demo';
+const VERSION = 'v7';
+const CACHE_NAME = 'service-worker-demo' + VERSION;
 
 console.log('begin');
 
@@ -19,7 +20,16 @@ this.addEventListener('install', function (event) {
 
 this.addEventListener('activate', function (event) {
     console.log('激活 sw.js，可以开始处理 fetch 请求。');
-})
+    event.waitUntil(
+        caches.keys().then(function (keyList) {
+            return Promise.all(keyList.map(function (key) {
+                if (CACHE_NAME.indexOf(key) === -1) {
+                    return caches.delete(key);
+                }
+            }))
+        })
+    )
+});
 
 this.addEventListener('fetch', function (event) {
     event.respondWith(
